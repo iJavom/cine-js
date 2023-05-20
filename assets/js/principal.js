@@ -1,12 +1,12 @@
 var cine = {
-    nombre : "Cine JS UNC"
+    nombre : "🎬Cine JS UNC🎬",
+    cartelera : []
 }
 
+//funcion de inicio de la pagina 
+var main = (()=>{
+    ponerTituloPagina();
+    ponerPeliculasEjemplo();
+})();
 
-var ponerTituloPagina = () => {
-    var tituloPagina = document.querySelector("#titulo-pagina");
-    tituloPagina.textContent = cine.nombre;
-}
 
-
-ponerTituloPagina();
