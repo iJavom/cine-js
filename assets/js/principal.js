@@ -7,6 +7,8 @@ var cine = {
 var main = (()=>{
     ponerTituloPagina();
     ponerPeliculasEjemplo();
+    crearSala();
+    mostrarSala();
 })();
 
 

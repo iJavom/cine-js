@@ -8,6 +8,7 @@ class Pelicula{
     estreno;
     posterUrl;
     trailerUrl;
+    sala=[];
 }
 
 
@@ -20,8 +21,13 @@ var agregarPelicula = (peliculaParam) =>{
           <h5 class="card-title">${peliculaParam.titulo}</h5>
           <p class="card-text">${peliculaParam.sinopsis}</p>
           <a class="text-danger" onclick="eliminarPelicula(${peliculaParam.id})">Eliminar</a>
-          <a href="${peliculaParam.trailerUrl}" class="btn btn-primary">Trailer</a>
-        </div>
+          <a href="${peliculaParam.trailerUrl}" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-title="Ver Trailer"><span class="material-symbols-outlined">
+          videocam
+          </span></a>
+          <a onclick="mostrarTeatro()"  data-bs-toggle="tooltip" data-bs-title="Comprar / Cancelar" class="btn btn-success"><span class="material-symbols-outlined">
+          shopping_cart
+          </span></a>
+          </div>
       </div>
 </div>`
     seccionPeliculas.insertAdjacentHTML('afterbegin',tarjetaHTML);
@@ -43,7 +49,7 @@ var guardarPelicula = () =>{
     peliculaObjeto.estreno = document.querySelector("#estreno").value;
     peliculaObjeto.posterUrl = document.querySelector("#imagen").value;
     peliculaObjeto.trailerUrl = document.querySelector("#trailer").value;
-    
+    peliculaObjeto.sala = crearSala();
     agregarPelicula(peliculaObjeto);
     mostrarOcultarForm();
 
