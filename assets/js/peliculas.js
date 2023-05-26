@@ -24,7 +24,7 @@ var agregarPelicula = (peliculaParam) =>{
           <a href="${peliculaParam.trailerUrl}" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-title="Ver Trailer"><span class="material-symbols-outlined">
           videocam
           </span></a>
-          <a onclick="mostrarTeatro()"  data-bs-toggle="tooltip" data-bs-title="Comprar / Cancelar" class="btn btn-success"><span class="material-symbols-outlined">
+          <a onclick="mostrarSala(${peliculaParam.id})"  data-bs-toggle="tooltip" data-bs-title="Comprar / Cancelar" class="btn btn-success"><span class="material-symbols-outlined">
           shopping_cart
           </span></a>
           </div>

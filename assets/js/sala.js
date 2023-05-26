@@ -9,26 +9,43 @@ var crearSala = () => {
     for (let i = 0; i < filas; i++) {
         sala.push(fila.slice(0,sillas));
     }
-    cine.sala = sala;
-    //return sala;
+    //cine.sala = sala;
+    return sala;
 }
 
-var mostrarSala = () => {
+var mostrarSala = (id) => {
+
     let sillaAcumuladas = ``;
-    for(let i = 0; i < cine.sala.length; i++){
-        sillaAcumuladas += '<tr>'
-        for(let j = 0; j< cine.sala[i].length; j++){   
-            sillaAcumuladas = sillaAcumuladas+`<td onclick="comprarCancelar(${i},${j})"><span id="silla-${i}-${j}" class="material-symbols-outlined">chair</span></td>`;
+    peliculaSala = cine.cartelera.find((elemento)=>{
+        return elemento.id == id;
+    });
+    if(peliculaSala != undefined){
+        for(let i = 0; i < peliculaSala.sala.length; i++){
+            sillaAcumuladas += '<tr>'
+            for(let j = 0; j< peliculaSala.sala[i].length; j++){ 
+                if(peliculaSala.sala[i][j]){
+                    sillaAcumuladas = sillaAcumuladas+`<td onclick="comprarCancelar(${i},${j},${id})"><span id="silla-${i}-${j}" class="material-symbols-outlined comprada">chair</span></td>`;
+                }else{
+                    sillaAcumuladas = sillaAcumuladas+`<td onclick="comprarCancelar(${i},${j},${id})"><span id="silla-${i}-${j}" class="material-symbols-outlined">chair</span></td>`;
+                }
+            }
+            sillaAcumuladas = sillaAcumuladas + '</tr>';
         }
-        sillaAcumuladas = sillaAcumuladas + '</tr>';
+    
+        let sala = document.querySelector(`#asientos-teatro`);
+        sala.innerHTML = sillaAcumuladas;
+        mostrarTeatro();
     }
-    let sala = document.querySelector(`#asientos-teatro`);
-    sala.innerHTML = sillaAcumuladas;
+
 }
 
-var comprarCancelar = (i,j)=>{
+var comprarCancelar = (i,j,id)=>{
+    debugger;
     document.querySelector(`#silla-${i}-${j}`).classList.toggle(`comprada`);
-    cine.sala[i][j] = !cine.sala[i][j];
+    peliculaSala = cine.cartelera.find((elemento)=>{
+        return elemento.id == id;
+    });
+    peliculaSala.sala[i][j] = !peliculaSala.sala[i][j];
 }
 
 var mostrarTeatro = () =>{

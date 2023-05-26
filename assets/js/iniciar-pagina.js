@@ -18,4 +18,17 @@ var ponerPeliculasEjemplo = ()=>{
     peliculaObjeto.sala = crearSala();
     agregarPelicula(peliculaObjeto);
 
+    peliculaObjeto = new Pelicula();
+    if(cine.cartelera.length == 0){
+        peliculaObjeto.id=1;
+    }else{
+        peliculaObjeto.id = cine.cartelera[cine.cartelera.length-1].id + 1;
+    }
+    peliculaObjeto.titulo = 'Guardianes de la Galaxia Vol 3'
+    peliculaObjeto.sinopsis = "En GUARDIANES DE LA GALAXIA VOL. 3 de Marvel Studios, la querida banda de Guardianes se instala en Knowhere. Pero sus vidas no tardan en verse alteradas por los ecos del turbulento pasado de Rocket. Peter Quill, aún conmocionado por la pérdida de Gamora, debe reunir a su equipo en una peligrosa misión para salvar la vida de Rocket, una misión que, si no se completa con éxito, podría muy posiblemente conducir al final de los Guardianes tal y como los conocemos."
+    peliculaObjeto.trailerUrl = "https://www.youtube.com/watch?v=dPvx_m-XdlI";
+    peliculaObjeto.posterUrl = 'https://assets.cinemark-core.com/5db771be04daec00076df3f5/vista/movies/64388c5c4fb2d20008366216/common/guardianes-de-la-galaxia3-93191-1681427657446.jpg'
+    peliculaObjeto.sala = crearSala();
+    agregarPelicula(peliculaObjeto);
+
 }
